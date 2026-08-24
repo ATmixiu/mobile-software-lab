@@ -1,0 +1,15 @@
+/**index.wxss**/
+page {
+  text-align:center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+.title{
+  color:red;
+  font: size 40rpx;
+}

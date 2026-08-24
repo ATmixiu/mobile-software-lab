@@ -1,0 +1,9 @@
+<!--index.wxml-->
+<navigation-bar title="test" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="title">{{wording[index]}}</view>
+    <image mode="widthFix" src="{{imageSrc[index]}}"></image>
+  </view>
+</scroll-view>
+<button bindtap="onClick">{{buttontext[index]}}</button>
