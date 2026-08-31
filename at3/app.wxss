@@ -1,0 +1,57 @@
+@import "utils/interaction.wxss";
+/* 新闻列表 */
+.news-list {
+  min-height: 600rpx;
+  padding: 15rpx;
+}
+
+
+/* 每一条新闻 */
+.news-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 10rpx 0;
+
+  border-bottom: 1rpx solid #dddddd;
+}
+
+
+/* 新闻图片 */
+.news-item image {
+  width: 230rpx;
+  height: 150rpx;
+
+  margin-right: 20rpx;
+
+  flex-shrink: 0;
+}
+
+
+/* 新闻文字区域 */
+.news-info {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 130rpx;
+}
+
+
+/* 新闻标题 */
+.news-title {
+  font-size: 30rpx;
+  line-height: 42rpx;
+}
+
+
+/* 新闻日期 */
+.news-date {
+  margin-top: 15rpx;
+
+  font-size: 24rpx;
+  color: #999999;
+}

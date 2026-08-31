@@ -1,0 +1,14 @@
+<view
+  class="back-top"
+  catchtap="backToTop"
+>
+
+  <view class="back-top-arrow">
+    ↑
+  </view>
+
+  <view class="back-top-text">
+    顶部
+  </view>
+
+</view>

@@ -1,0 +1,77 @@
+<swipe-back>
+
+<view class="detail-page">
+
+  <view class="article-card">
+
+    <view
+      wx:if="{{article.category}}"
+      class="article-category"
+    >
+      {{article.category}}
+    </view>
+
+
+    <view class="article-title">
+      {{article.title}}
+    </view>
+
+
+    <view class="article-meta">
+
+      <text>{{article.add_date}}</text>
+
+      <text class="meta-divider">|</text>
+
+      <text>观海听涛</text>
+
+    </view>
+
+
+    <image
+      wx:if="{{article.poster}}"
+      class="article-poster"
+      src="{{article.poster}}"
+      mode="widthFix"
+    ></image>
+
+
+    <view class="article-content">
+
+      <view
+        class="article-paragraph"
+        wx:for="{{paragraphs}}"
+        wx:key="index"
+      >
+        {{item}}
+      </view>
+
+    </view>
+
+
+    <view class="article-bottom">
+
+      <button
+        wx:if="{{isAdd}}"
+        class="favorite-button favorite-active"
+        bindtap="cancelFavorites"
+      >
+        ♥ 已收藏
+      </button>
+
+      <button
+        wx:else
+        class="favorite-button"
+        bindtap="addFavorites"
+      >
+        ♡ 收藏新闻
+      </button>
+
+    </view>
+
+  </view>
+
+</view>
+
+</swipe-back>
+<back-top></back-top>

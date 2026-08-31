@@ -1,0 +1,233 @@
+<swipe-back>
+
+<view class="index-page">
+
+  <view class="nav-header">
+
+    <view class="main-nav">
+
+      <view
+        class="nav-wrapper"
+        wx:for="{{navList}}"
+        wx:key="name"
+      >
+
+        <view
+          class="nav-item {{activeNav === item.name ? 'nav-active' : ''}}"
+          bindtap="onNavTap"
+          data-index="{{index}}"
+        >
+          {{item.name}}
+        </view>
+
+        <view
+          wx:if="{{showDropdown && activeNav === item.name && item.children.length > 0}}"
+          class="dropdown-panel {{index >= 4 ? 'dropdown-right' : ''}}"
+          bindtouchstart="onMenuTouchStart"
+          bindtouchend="onMenuTouchEnd"
+        >
+
+          <view
+            class="dropdown-item"
+            wx:for="{{item.children}}"
+            wx:for-item="subItem"
+            wx:key="*this"
+            bindtap="onDropdownItemTap"
+            data-name="{{subItem}}"
+          >
+            {{subItem}}
+          </view>
+
+          <view class="swipe-tip">
+            上下滑动可收起
+          </view>
+
+        </view>
+
+      </view>
+
+    </view>
+
+  </view>
+
+
+  <view
+    wx:if="{{showDropdown}}"
+    class="nav-mask"
+    bindtap="closeDropdown"
+  ></view>
+
+
+  <view class="page-content">
+
+    <view class="search-box">
+
+      <text class="search-symbol">⌕</text>
+
+      <input
+        class="search-input"
+        placeholder="搜索新闻标题"
+        value="{{keyword}}"
+        bindinput="onSearchInput"
+      />
+
+      <text
+        wx:if="{{keyword}}"
+        class="clear-search"
+        bindtap="clearSearch"
+      >
+        ×
+      </text>
+
+    </view>
+
+
+    <view wx:if="{{keyword}}" class="search-result-area">
+
+      <view class="section-title-row">
+        <text class="section-title">搜索结果</text>
+        <text class="result-count">{{searchResults.length}} 条</text>
+      </view>
+
+      <view
+        class="text-news-card"
+        wx:for="{{searchResults}}"
+        wx:key="id"
+        bindtap="goToDetail"
+        data-id="{{item.id}}"
+      >
+
+        <view class="news-meta">
+          <text class="category-tag">{{item.category}}</text>
+          <text>{{item.add_date}}</text>
+        </view>
+
+        <view class="card-title">
+          {{item.title}}
+        </view>
+
+        <view class="card-summary">
+          {{item.summary}}
+        </view>
+
+      </view>
+
+      <view
+        wx:if="{{searchResults.length == 0}}"
+        class="empty-search"
+      >
+        没有找到相关新闻
+      </view>
+
+    </view>
+
+
+    <block wx:else>
+
+      <swiper
+        class="headline-swiper"
+        indicator-dots="true"
+        autoplay="true"
+        interval="5000"
+        duration="500"
+      >
+
+        <swiper-item
+          wx:for="{{swiperNews}}"
+          wx:key="id"
+          bindtap="goToDetail"
+          data-id="{{item.id}}"
+        >
+
+          <view class="swiper-card">
+
+            <image
+              class="swiper-image"
+              src="{{item.poster}}"
+              mode="aspectFill"
+            ></image>
+
+            <view class="swiper-dark"></view>
+
+            <view class="swiper-info">
+
+              <view class="swiper-date">
+                {{item.add_date}}
+              </view>
+
+              <view class="swiper-title">
+                {{item.title}}
+              </view>
+
+            </view>
+
+          </view>
+
+        </swiper-item>
+
+      </swiper>
+
+
+      <view
+        class="home-section"
+        wx:for="{{homeSections}}"
+        wx:for-item="section"
+        wx:key="name"
+      >
+
+        <view class="section-header">
+
+          <view class="section-heading">
+            <view class="section-bar"></view>
+            <text>{{section.name}}</text>
+          </view>
+
+          <view
+            class="more-button"
+            bindtap="goToCategory"
+            data-name="{{section.name}}"
+            data-parent="{{section.parent}}"
+          >
+            更多 ›
+          </view>
+
+        </view>
+
+
+        <view
+          class="text-news-card"
+          wx:for="{{section.newsList}}"
+          wx:for-item="newsItem"
+          wx:key="id"
+          bindtap="goToDetail"
+          data-id="{{newsItem.id}}"
+        >
+
+          <view class="news-date">
+            {{newsItem.add_date}}
+          </view>
+
+          <view class="card-title">
+            {{newsItem.title}}
+          </view>
+
+          <view class="card-summary">
+            {{newsItem.summary}}
+          </view>
+
+          <view class="read-more">
+            查看详情 ›
+          </view>
+
+        </view>
+
+      </view>
+
+    </block>
+
+  </view>
+
+</view>
+
+</swipe-back>
+<back-top></back-top>

@@ -1,0 +1,7 @@
+<view
+  class="swipe-back"
+  bindtouchstart="touchStart"
+  bindtouchend="touchEnd"
+>
+  <slot></slot>
+</view>

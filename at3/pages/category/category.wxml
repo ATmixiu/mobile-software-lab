@@ -1,0 +1,84 @@
+<swipe-back>
+
+<view class="category-page">
+
+  <view class="breadcrumb">
+
+    <text class="home-link" bindtap="goToHome">
+      首页
+    </text>
+
+    <text class="breadcrumb-arrow">›</text>
+
+    <text>{{parent}}</text>
+
+    <text class="breadcrumb-arrow">›</text>
+
+    <text>{{categoryName}}</text>
+
+  </view>
+
+
+  <view class="category-banner">
+
+    <view class="category-small">
+      {{parent}}
+    </view>
+
+    <view class="category-title">
+      {{categoryName}}
+    </view>
+
+  </view>
+
+
+  <view class="category-content">
+
+    <view
+      class="category-card"
+      wx:for="{{newsList}}"
+      wx:key="id"
+      bindtap="goToDetail"
+      data-id="{{item.id}}"
+    >
+
+      <view class="category-date">
+        {{item.add_date}}
+      </view>
+
+      <view class="category-news-title">
+        {{item.title}}
+      </view>
+
+      <view class="category-summary">
+        {{item.summary}}
+      </view>
+
+      <view class="category-more">
+        阅读全文 ›
+      </view>
+
+    </view>
+
+
+    <view
+      wx:if="{{newsList.length == 0}}"
+      class="empty-category"
+    >
+
+      <view class="empty-title">
+        暂无新闻
+      </view>
+
+      <view class="empty-text">
+        该栏目暂时没有录入新闻内容
+      </view>
+
+    </view>
+
+  </view>
+
+</view>
+
+</swipe-back>
+<back-top></back-top>

@@ -1,0 +1,352 @@
+/* =========================================
+   全局轻量点击反馈
+   功能：
+   1. 新闻卡片点击时轻微变灰
+   2. 按钮点击时轻微缩小
+   3. 菜单、标签、列表增加触摸反馈
+========================================= */
+
+
+/* =========================================
+   首页新闻卡片
+========================================= */
+
+.text-news-card {
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.text-news-card:active {
+  background-color: #f3f7fb;
+
+  transform: scale(0.985);
+}
+
+
+/* 首页轮播新闻 */
+.swiper-card {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.swiper-card:active {
+  transform: scale(0.985);
+
+  opacity: 0.92;
+}
+
+
+/* 首页“更多”按钮 */
+.more-button {
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.more-button:active {
+  background-color: #edf6ff;
+
+  transform: scale(0.96);
+}
+
+
+/* 首页导航 */
+.nav-item {
+  transition:
+    background-color 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.nav-item:active {
+  background-color: rgba(255, 255, 255, 0.16);
+
+  opacity: 0.86;
+}
+
+
+/* 下拉菜单 */
+.dropdown-item {
+  transition:
+    background-color 0.15s ease,
+    padding-left 0.15s ease;
+}
+
+
+.dropdown-item:active {
+  background-color: #edf6ff;
+
+  padding-left: 34rpx;
+}
+
+
+/* 搜索清除按钮 */
+.clear-search {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.clear-search:active {
+  transform: scale(0.86);
+
+  opacity: 0.65;
+}
+
+
+
+/* =========================================
+   分类页面
+========================================= */
+
+.category-card {
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+.category-card:active {
+  background-color: #f5f9fd;
+
+  transform: scale(0.985);
+
+  box-shadow: none;
+}
+
+
+/* 分类页阅读全文 */
+.category-more {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.category-more:active {
+  transform: translateX(6rpx);
+
+  opacity: 0.7;
+}
+
+
+/* 面包屑首页 */
+.home-link {
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.home-link:active {
+  opacity: 0.6;
+
+  transform: scale(0.96);
+}
+
+
+
+/* =========================================
+   新闻详情
+========================================= */
+
+/* 收藏按钮 */
+.favorite-button {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+.favorite-button:active {
+  transform: scale(0.97);
+
+  opacity: 0.86;
+
+  box-shadow: none;
+}
+
+
+/* 新闻大图轻微反馈 */
+.article-poster {
+  transition:
+    opacity 0.15s ease;
+}
+
+
+.article-poster:active {
+  opacity: 0.94;
+}
+
+
+
+/* =========================================
+   我的页面
+========================================= */
+
+/* 收藏和历史标签 */
+.tab-item {
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+
+.tab-item:active {
+  transform: scale(0.97);
+}
+
+
+/* 收藏 / 历史记录 */
+.record-item {
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+
+.record-item:active {
+  background-color: #f3f7fb;
+
+  transform: scale(0.99);
+}
+
+
+/* 登录按钮 */
+.login-entry {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+
+.login-entry:active {
+  transform: scale(0.96);
+
+  opacity: 0.90;
+
+  box-shadow: 0 3rpx 10rpx rgba(0, 65, 130, 0.10);
+}
+
+
+/* 退出按钮 */
+.logout-button {
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+
+.logout-button:active {
+  transform: scale(0.95);
+
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+
+/* 清空浏览历史 */
+.clear-history {
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+
+.clear-history:active {
+  transform: scale(0.94);
+
+  background-color: #dceeff;
+}
+
+
+/* 选择头像 */
+.avatar-button {
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+
+.avatar-button:active {
+  transform: scale(0.96);
+
+  background-color: #e3f1fd;
+}
+
+
+/* 取消按钮 */
+.cancel-button {
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+
+
+.cancel-button:active {
+  transform: scale(0.96);
+
+  background-color: #e7eaed;
+}
+
+
+/* 确认登录 */
+.confirm-button {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.confirm-button:active {
+  transform: scale(0.96);
+
+  opacity: 0.88;
+}
+
+
+
+/* =========================================
+   微信 button 通用点击反馈
+========================================= */
+
+button {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+button:active {
+  transform: scale(0.97);
+
+  opacity: 0.90;
+}
+
+
+
+/* =========================================
+   回到顶部按钮
+========================================= */
+
+.back-top {
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+}
+
+
+.back-top:active {
+  transform: scale(0.90);
+
+  opacity: 0.82;
+}

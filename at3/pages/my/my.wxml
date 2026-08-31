@@ -1,0 +1,418 @@
+<swipe-back>
+
+<view class="my-page">
+
+  <!-- 顶部个人信息 -->
+  <view class="profile-header">
+
+    <!-- 已登录 -->
+    <block wx:if="{{isLogin}}">
+
+      <view class="profile-card">
+
+        <image
+          class="profile-avatar"
+          src="{{src}}"
+          mode="aspectFill"
+        ></image>
+
+        <view class="profile-info">
+
+          <view class="profile-name">
+            {{nickName}}
+          </view>
+
+          <view class="profile-desc">
+            欢迎使用我的新闻网
+          </view>
+
+        </view>
+
+        <button
+          class="logout-button"
+          bindtap="logout"
+        >
+          退出
+        </button>
+
+      </view>
+
+    </block>
+
+
+    <!-- 未登录 -->
+    <block wx:else>
+
+      <view class="not-login">
+
+        <view class="default-avatar">
+          👤
+        </view>
+
+        <view class="not-login-title">
+          还未登录
+        </view>
+
+        <view class="not-login-desc">
+          登录后可以查看收藏和浏览历史
+        </view>
+
+        <button
+          class="login-entry"
+          bindtap="openLoginPopup"
+        >
+          点击登录
+        </button>
+
+      </view>
+
+    </block>
+
+  </view>
+
+
+  <!-- 收藏与浏览历史 -->
+  <view class="content-card">
+
+    <!-- 两个功能框 -->
+    <view class="tab-bar">
+
+      <view
+        class="tab-item {{currentTab === 'favorite' ? 'tab-active' : ''}}"
+        bindtap="switchTab"
+        data-tab="favorite"
+      >
+
+        <view class="tab-inner">
+
+          <text class="tab-name">
+            我的收藏
+          </text>
+
+          <view class="tab-number">
+            {{number}}
+          </view>
+
+        </view>
+
+      </view>
+
+
+      <view
+        class="tab-item {{currentTab === 'history' ? 'tab-active' : ''}}"
+        bindtap="switchTab"
+        data-tab="history"
+      >
+
+        <view class="tab-inner">
+
+          <text class="tab-name">
+            浏览历史
+          </text>
+
+          <view class="tab-number">
+            {{historyNumber}}
+          </view>
+
+        </view>
+
+      </view>
+
+    </view>
+
+
+    <!-- 收藏内容 -->
+    <block wx:if="{{currentTab === 'favorite'}}">
+
+      <!-- 未登录 -->
+      <view
+        wx:if="{{!isLogin}}"
+        class="empty-box"
+      >
+
+        <view class="empty-icon">
+          ☆
+        </view>
+
+        <view class="empty-title">
+          登录后查看收藏
+        </view>
+
+        <view class="empty-desc">
+          收藏喜欢的校园新闻，方便以后继续阅读
+        </view>
+
+      </view>
+
+
+      <!-- 没有收藏 -->
+      <view
+        wx:elif="{{number == 0}}"
+        class="empty-box"
+      >
+
+        <view class="empty-icon">
+          ♡
+        </view>
+
+        <view class="empty-title">
+          暂无收藏
+        </view>
+
+        <view class="empty-desc">
+          在新闻详情页点击“收藏新闻”即可添加
+        </view>
+
+      </view>
+
+
+      <!-- 收藏列表 -->
+      <view
+        wx:else
+        class="record-list"
+      >
+
+        <view
+          class="record-item"
+          wx:for="{{newsList}}"
+          wx:key="id"
+          bindtap="goToDetail"
+          data-id="{{item.id}}"
+        >
+
+          <view class="record-content">
+
+            <view
+              wx:if="{{item.category}}"
+              class="record-category"
+            >
+              {{item.category}}
+            </view>
+
+            <view class="record-title">
+              {{item.title}}
+            </view>
+
+            <view class="record-meta">
+              {{item.add_date}}
+            </view>
+
+          </view>
+
+          <view class="record-arrow">
+            ›
+          </view>
+
+        </view>
+
+      </view>
+
+    </block>
+
+
+    <!-- 浏览历史内容 -->
+    <block wx:else>
+
+      <!-- 未登录 -->
+      <view
+        wx:if="{{!isLogin}}"
+        class="empty-box"
+      >
+
+        <view class="empty-icon">
+          ◷
+        </view>
+
+        <view class="empty-title">
+          登录后查看浏览历史
+        </view>
+
+        <view class="empty-desc">
+          你阅读过的新闻会自动保存在这里
+        </view>
+
+      </view>
+
+
+      <block wx:else>
+
+        <!-- 历史顶部操作 -->
+        <view
+          wx:if="{{historyNumber > 0}}"
+          class="history-tools"
+        >
+
+          <text>
+            最近浏览
+          </text>
+
+          <text
+            class="clear-history"
+            bindtap="clearHistory"
+          >
+            清空
+          </text>
+
+        </view>
+
+
+        <!-- 没有历史 -->
+        <view
+          wx:if="{{historyNumber == 0}}"
+          class="empty-box"
+        >
+
+          <view class="empty-icon">
+            ◷
+          </view>
+
+          <view class="empty-title">
+            暂无浏览记录
+          </view>
+
+          <view class="empty-desc">
+            打开新闻详情后会自动记录浏览历史
+          </view>
+
+        </view>
+
+
+        <!-- 历史列表 -->
+        <view
+          wx:else
+          class="record-list"
+        >
+
+          <view
+            class="record-item"
+            wx:for="{{historyList}}"
+            wx:key="id"
+            bindtap="goToDetail"
+            data-id="{{item.id}}"
+          >
+
+            <view class="record-content">
+
+              <view class="record-category">
+                {{item.category}}
+              </view>
+
+              <view class="record-title">
+                {{item.title}}
+              </view>
+
+              <view class="history-meta">
+
+                <text>
+                  新闻日期 {{item.add_date}}
+                </text>
+
+                <text>
+                  浏览 {{item.view_time}}
+                </text>
+
+              </view>
+
+            </view>
+
+            <view class="record-arrow">
+              ›
+            </view>
+
+          </view>
+
+        </view>
+
+      </block>
+
+    </block>
+
+  </view>
+
+
+  <!-- 登录弹窗 -->
+  <view
+    wx:if="{{showLoginPopup}}"
+    class="popup-mask"
+    bindtap="closeLoginPopup"
+  >
+
+    <view
+      class="login-popup"
+      catchtap="stopTap"
+    >
+
+      <view class="popup-title">
+        登录我的新闻网
+      </view>
+
+      <view class="popup-desc">
+        请选择头像并填写昵称
+      </view>
+
+
+      <button
+        class="avatar-button"
+        open-type="chooseAvatar"
+        bindchooseavatar="onChooseAvatar"
+      >
+
+        <image
+          wx:if="{{tempAvatar}}"
+          src="{{tempAvatar}}"
+          mode="aspectFill"
+        ></image>
+
+        <view
+          wx:else
+          class="choose-avatar-text"
+        >
+
+          <text class="avatar-plus">
+            ＋
+          </text>
+
+          <text>
+            选择头像
+          </text>
+
+        </view>
+
+      </button>
+
+
+      <input
+        class="nickname-input"
+        type="nickname"
+        placeholder="请输入昵称"
+        value="{{tempNickName}}"
+        bindinput="onNickNameInput"
+      />
+
+
+      <view class="popup-buttons">
+
+        <button
+          class="cancel-button"
+          bindtap="closeLoginPopup"
+        >
+          取消
+        </button>
+
+        <button
+          class="confirm-button"
+          bindtap="confirmLogin"
+        >
+          确认登录
+        </button>
+
+      </view>
+
+    </view>
+
+  </view>
+
+</view>
+
+</swipe-back>
+<back-top></back-top>
