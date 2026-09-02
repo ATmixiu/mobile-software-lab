@@ -1,0 +1,535 @@
+/* pages/game/game.wxss */
+
+page {
+  height: 100%;
+  overflow: hidden;
+  background: #dfe9df;
+}
+
+
+/* ==============================
+   整个页面
+============================== */
+
+.page {
+  width: 100%;
+  height: 100vh;
+
+  box-sizing: border-box;
+
+  padding:
+    18rpx
+    28rpx
+    18rpx;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #cddfce 0%,
+      #e6ede0 55%,
+      #f0e7d7 100%
+    );
+}
+
+
+/* ==============================
+   顶部状态
+============================== */
+
+.top-card {
+  width: 100%;
+
+  height: 112rpx;
+
+  box-sizing: border-box;
+
+  padding:
+    16rpx
+    22rpx;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  flex-shrink: 0;
+
+  border-radius: 25rpx;
+
+  background:
+    rgba(248, 239, 220, 0.94);
+
+  box-shadow:
+    0 6rpx 18rpx
+    rgba(61, 82, 59, 0.12);
+}
+
+
+.level-area {
+  width: 150rpx;
+
+  padding-right: 15rpx;
+
+  border-right:
+    2rpx solid
+    rgba(63, 82, 60, 0.12);
+}
+
+
+.level-label {
+  font-size: 19rpx;
+
+  color: #8b8d83;
+}
+
+
+.level-title {
+  margin-top: 3rpx;
+
+  font-size: 34rpx;
+
+  font-weight: 800;
+
+  color: #314434;
+}
+
+
+/* ==============================
+   状态栏
+============================== */
+
+.status-area {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-around;
+}
+
+
+.status-item {
+  min-width: 85rpx;
+
+  text-align: center;
+}
+
+
+.status-icon {
+  font-size: 23rpx;
+
+  line-height: 1;
+}
+
+
+.status-value {
+  margin-top: 2rpx;
+
+  font-size: 23rpx;
+
+  font-weight: 750;
+
+  color: #3c5540;
+}
+
+
+.status-label {
+  margin-top: 1rpx;
+
+  font-size: 17rpx;
+
+  color: #898d85;
+}
+
+
+/* ==============================
+   地图区域
+============================== */
+
+.game-card {
+  width: 74vw;
+
+  height: 74vw;
+
+  margin-top: 16rpx;
+
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: hidden;
+
+  border:
+    5rpx solid
+    rgba(248, 239, 220, 0.95);
+
+  border-radius: 25rpx;
+
+  background: #c9d7c5;
+
+  box-shadow:
+    0 8rpx 20rpx
+    rgba(55, 77, 53, 0.16);
+}
+
+
+.canvas {
+  width: 72vw;
+
+  height: 72vw;
+}
+
+
+/* ==============================
+   方向键
+============================== */
+
+.controller {
+  margin-top: 13rpx;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+
+.direction-row {
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* 按钮缩小 */
+
+.direction-btn {
+  width: 82rpx;
+
+  height: 82rpx;
+
+  margin:
+    3rpx
+    12rpx;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border:
+    2rpx solid
+    rgba(65, 89, 63, 0.13);
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8efdc,
+      #ded7c5
+    );
+
+  color: #3e5943;
+
+  font-size: 29rpx;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 5rpx 12rpx
+    rgba(55, 76, 53, 0.15);
+}
+
+
+.direction-btn::after {
+  border: none;
+}
+
+
+.direction-btn:active {
+  transform: scale(0.88);
+
+  background: #cfdfcc;
+}
+
+
+.up-btn {
+  margin-bottom: 0;
+}
+
+
+.down-btn {
+  margin-top: 0;
+}
+
+
+/* 摇杆中心 */
+
+.center-pig {
+  width: 68rpx;
+
+  height: 68rpx;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #d5e5d1;
+
+  font-size: 38rpx;
+}
+
+
+/* ==============================
+   底部功能按钮
+============================== */
+
+.function-card {
+  width: 92%;
+
+  height: 72rpx;
+
+  box-sizing: border-box;
+
+  margin-top: 14rpx;
+
+  padding:
+    6rpx
+    8rpx;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  flex-shrink: 0;
+
+  border-radius: 25rpx;
+
+  background:
+    rgba(248, 239, 220, 0.88);
+
+  box-shadow:
+    0 5rpx 15rpx
+    rgba(57, 77, 54, 0.11);
+}
+
+
+.function-btn {
+  width: 31%;
+
+  height: 58rpx;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 20rpx;
+
+  background: #dce8d8;
+
+  color: #405743;
+
+  font-size: 23rpx;
+
+  font-weight: 650;
+
+  line-height: normal;
+}
+
+
+.function-btn::after {
+  border: none;
+}
+
+
+.function-btn:active {
+  transform: scale(0.94);
+}
+
+
+.restart-btn {
+  background:
+    linear-gradient(
+      135deg,
+      #567e5d,
+      #3e6245
+    );
+
+  color: #fff8e9;
+}
+
+
+/* ==============================
+   通关界面
+============================== */
+
+.win-mask {
+  position: fixed;
+
+  left: 0;
+
+  top: 0;
+
+  z-index: 100;
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(34, 52, 37, 0.62);
+}
+
+
+.win-box {
+  width: 500rpx;
+
+  box-sizing: border-box;
+
+  padding:
+    38rpx
+    38rpx;
+
+  border-radius: 35rpx;
+
+  background: #f8efdc;
+
+  box-shadow:
+    0 20rpx 50rpx
+    rgba(29, 45, 31, 0.30);
+
+  text-align: center;
+
+  animation:
+    winShow
+    0.25s;
+}
+
+
+.win-icon {
+  font-size: 75rpx;
+}
+
+
+.win-title {
+  margin-top: 10rpx;
+
+  font-size: 41rpx;
+
+  font-weight: 800;
+
+  color: #344a38;
+}
+
+
+.win-subtitle {
+  margin-top: 7rpx;
+
+  font-size: 23rpx;
+
+  color: #85877e;
+}
+
+
+.win-result {
+  margin-top: 25rpx;
+
+  padding: 18rpx;
+
+  display: flex;
+
+  align-items: center;
+
+  border-radius: 23rpx;
+
+  background: #e1eadf;
+}
+
+
+.win-result-item {
+  flex: 1;
+}
+
+
+.result-number {
+  font-size: 31rpx;
+
+  font-weight: 800;
+
+  color: #3d5842;
+}
+
+
+.result-label {
+  margin-top: 4rpx;
+
+  font-size: 19rpx;
+
+  color: #858b82;
+}
+
+
+.result-line {
+  width: 2rpx;
+
+  height: 55rpx;
+
+  background:
+    rgba(70, 93, 67, 0.15);
+}
+
+
+@keyframes winShow {
+
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+}

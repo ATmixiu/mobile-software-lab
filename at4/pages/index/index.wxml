@@ -1,0 +1,281 @@
+<!-- pages/index/index.wxml -->
+
+<view class="page">
+
+
+<!-- 顶部装饰 -->
+
+<view class="hero">
+
+  <view class="logo">
+    🐷
+  </view>
+
+
+  <view class="title">
+    推箱子大师
+  </view>
+
+
+  <view class="subtitle">
+    经典益智小游戏
+  </view>
+
+</view>
+
+
+
+<!-- 游戏进度 -->
+
+<view class="progress-card">
+
+  <view class="progress-left">
+
+    <view class="progress-label">
+      游戏进度
+    </view>
+
+    <view class="progress-value">
+      {{unlockedCount}} / {{totalCount}}
+    </view>
+
+  </view>
+
+
+  <view class="progress-right">
+    已解锁 {{unlockedCount}} 关
+  </view>
+
+</view>
+
+
+
+<!-- 菜单 -->
+
+<view class="menu">
+
+
+  <button
+    class="menu-btn primary"
+    bindtap="startGame"
+  >
+
+    <view class="btn-icon">
+      ▶
+    </view>
+
+    <view class="btn-content">
+
+      <view class="btn-title">
+        开始游戏
+      </view>
+
+      <view class="btn-desc">
+        从第1关开始挑战
+      </view>
+
+    </view>
+
+    <view class="arrow">
+      ›
+    </view>
+
+  </button>
+
+
+
+  <button
+    class="menu-btn"
+    bindtap="continueGame"
+  >
+
+    <view class="btn-icon">
+      ⏩
+    </view>
+
+    <view class="btn-content">
+
+      <view class="btn-title">
+        继续游戏
+      </view>
+
+      <view class="btn-desc">
+        继续第 {{lastLevel + 1}} 关
+      </view>
+
+    </view>
+
+    <view class="arrow">
+      ›
+    </view>
+
+  </button>
+
+
+
+  <button
+    class="menu-btn"
+    bindtap="chooseLevel"
+  >
+
+    <view class="btn-icon">
+      🗺️
+    </view>
+
+    <view class="btn-content">
+
+      <view class="btn-title">
+        关卡选择
+      </view>
+
+      <view class="btn-desc">
+        查看全部游戏关卡
+      </view>
+
+    </view>
+
+    <view class="arrow">
+      ›
+    </view>
+
+  </button>
+
+
+
+  <button
+    class="menu-btn"
+    bindtap="showHelp"
+  >
+
+    <view class="btn-icon">
+      💡
+    </view>
+
+    <view class="btn-content">
+
+      <view class="btn-title">
+        游戏说明
+      </view>
+
+      <view class="btn-desc">
+        查看游戏玩法
+      </view>
+
+    </view>
+
+    <view class="arrow">
+      ›
+    </view>
+
+  </button>
+
+
+</view>
+
+
+
+<!-- 底部提示 -->
+
+<view class="footer">
+  推动所有箱子到目标位置即可通关
+</view>
+
+
+
+<!-- 游戏说明 -->
+
+<view
+  class="help-mask"
+  wx:if="{{showHelp}}"
+  bindtap="closeHelp"
+>
+
+
+  <view
+    class="help-box"
+    catchtap="nothing"
+  >
+
+    <view class="help-icon">
+      🎮
+    </view>
+
+
+    <view class="help-title">
+      游戏玩法
+    </view>
+
+
+    <view class="help-list">
+
+
+      <view class="help-item">
+
+        <view class="help-number">
+          1
+        </view>
+
+        <view>
+          使用方向键控制小猪移动
+        </view>
+
+      </view>
+
+
+      <view class="help-item">
+
+        <view class="help-number">
+          2
+        </view>
+
+        <view>
+          将箱子推向小鸟所在的目标位置
+        </view>
+
+      </view>
+
+
+      <view class="help-item">
+
+        <view class="help-number">
+          3
+        </view>
+
+        <view>
+          所有箱子到达目标后即可通关
+        </view>
+
+      </view>
+
+
+      <view class="help-item">
+
+        <view class="help-number">
+          4
+        </view>
+
+        <view>
+          可以使用撤销功能恢复上一步
+        </view>
+
+      </view>
+
+
+    </view>
+
+
+    <button
+      class="help-close"
+      bindtap="closeHelp"
+    >
+      我知道了
+    </button>
+
+
+  </view>
+
+
+</view>
+
+
+</view>

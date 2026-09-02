@@ -1,0 +1,190 @@
+<!-- pages/levels/levels.wxml -->
+
+<view class="page">
+
+
+<view class="header">
+
+  <view class="header-icon">
+    🗺️
+  </view>
+
+  <view class="header-title">
+    选择关卡
+  </view>
+
+  <view class="header-subtitle">
+    完成挑战，解锁新的关卡
+  </view>
+
+</view>
+
+
+
+<!-- 进度 -->
+
+<view class="progress-card">
+
+
+  <view class="progress-top">
+
+
+    <view>
+
+      <view class="progress-label">
+        游戏进度
+      </view>
+
+      <view class="progress-number">
+        {{unlockedCount}} / {{totalCount}}
+      </view>
+
+    </view>
+
+
+    <view class="progress-percent">
+      {{progressPercent}}%
+    </view>
+
+
+  </view>
+
+
+
+  <view class="progress-bar">
+
+    <view
+      class="progress-value"
+      style="{{progressStyle}}"
+    >
+    </view>
+
+  </view>
+
+
+  <view class="progress-desc">
+    已解锁 {{unlockedCount}} 个关卡
+  </view>
+
+
+</view>
+
+
+
+<!-- 2×2 -->
+
+<view class="level-grid">
+
+
+  <block
+    wx:for="{{levels}}"
+    wx:key="index"
+  >
+
+
+    <view
+      class="level-card {{item.unlock ? '' : 'locked-card'}}"
+      bindtap="startLevel"
+      data-index="{{item.index}}"
+    >
+
+
+      <view class="image-box">
+
+
+        <image
+          class="level-image"
+          src="{{item.image}}"
+          mode="aspectFill"
+        />
+
+
+        <view
+          class="lock-mask"
+          wx:if="{{!item.unlock}}"
+        >
+
+          <view class="lock-icon">
+            🔒
+          </view>
+
+          <view class="lock-text">
+            未解锁
+          </view>
+
+        </view>
+
+
+      </view>
+
+
+
+      <view class="level-name">
+
+        {{item.name}}
+
+      </view>
+
+
+
+      <view
+        class="level-state unlocked"
+        wx:if="{{item.unlock}}"
+      >
+        🔓 已解锁
+      </view>
+
+
+      <view
+        class="level-state"
+        wx:else
+      >
+        🔒 未解锁
+      </view>
+
+
+
+      <view
+        class="level-best"
+        wx:if="{{item.unlock}}"
+      >
+        🏆 最佳 {{item.best}}
+      </view>
+
+
+      <view
+        class="level-best locked-text"
+        wx:else
+      >
+        完成前一关解锁
+      </view>
+
+
+
+      <view
+        class="challenge"
+        wx:if="{{item.unlock}}"
+      >
+        开始挑战
+      </view>
+
+
+    </view>
+
+
+  </block>
+
+
+</view>
+
+
+
+<button
+  class="back-btn"
+  bindtap="backHome"
+>
+  返回主页
+</button>
+
+
+</view>

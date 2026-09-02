@@ -1,0 +1,167 @@
+<!-- pages/game/game.wxml -->
+
+<view class="page">
+
+<!-- 顶部：关卡 + 游戏状态 -->
+<view class="top-card">
+
+  <view class="level-area">
+    <view class="level-label">当前关卡</view>
+    <view class="level-title">{{levelName}}</view>
+  </view>
+
+  <view class="status-area">
+
+    <view class="status-item">
+      <view class="status-icon">👣</view>
+      <view class="status-value">{{steps}}</view>
+      <view class="status-label">步数</view>
+    </view>
+
+    <view class="status-item">
+      <view class="status-icon">⏱</view>
+      <view class="status-value">{{time}}</view>
+      <view class="status-label">时间</view>
+    </view>
+
+    <view class="status-item">
+      <view class="status-icon">🏆</view>
+      <view class="status-value">{{bestSteps}}</view>
+      <view class="status-label">最佳</view>
+    </view>
+
+  </view>
+
+</view>
+
+
+<!-- 游戏地图 -->
+<view class="game-card">
+
+  <canvas
+    canvas-id="gameCanvas"
+    class="canvas"
+  >
+  </canvas>
+
+</view>
+
+
+<!-- 方向控制 -->
+<view class="controller">
+
+  <button
+    class="direction-btn up-btn"
+    bindtap="up"
+  >
+    ▲
+  </button>
+
+  <view class="direction-row">
+
+    <button
+      class="direction-btn"
+      bindtap="left"
+    >
+      ◀
+    </button>
+
+    <view class="center-pig">
+      🐷
+    </view>
+
+    <button
+      class="direction-btn"
+      bindtap="right"
+    >
+      ▶
+    </button>
+
+  </view>
+
+  <button
+    class="direction-btn down-btn"
+    bindtap="down"
+  >
+    ▼
+  </button>
+
+</view>
+
+
+<!-- 功能按钮 -->
+<view class="function-card">
+
+  <button
+    class="function-btn"
+    bindtap="undo"
+  >
+    ↩ 撤销
+  </button>
+
+  <button
+    class="function-btn restart-btn"
+    bindtap="restartGame"
+  >
+    ↻ 重开
+  </button>
+
+  <button
+    class="function-btn"
+    bindtap="backHome"
+  >
+    ⌂ 返回
+  </button>
+
+</view>
+
+
+<!-- 通关动画 -->
+<view
+  class="win-mask"
+  wx:if="{{showWin}}"
+>
+
+  <view class="win-box">
+
+    <view class="win-icon">
+      🎉
+    </view>
+
+    <view class="win-title">
+      恭喜通关
+    </view>
+
+    <view class="win-subtitle">
+      {{levelName}} 挑战成功
+    </view>
+
+    <view class="win-result">
+
+      <view class="win-result-item">
+        <view class="result-number">
+          {{steps}}
+        </view>
+        <view class="result-label">
+          步数
+        </view>
+      </view>
+
+      <view class="result-line"></view>
+
+      <view class="win-result-item">
+        <view class="result-number">
+          {{time}}
+        </view>
+        <view class="result-label">
+          用时
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+
+</view>
+
+</view>

@@ -1,0 +1,605 @@
+/* pages/index/index.wxss */
+/* ✍️ 我们新增：森林绿 + 暖米色主题首页 */
+
+
+page {
+  background: #dfe9df;
+}
+
+
+/* ==============================
+   整个页面
+============================== */
+
+.page {
+  width: 100%;
+
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  padding:
+    42rpx
+    42rpx
+    70rpx;
+
+  background:
+    linear-gradient(
+      180deg,
+      #cddfce 0%,
+      #e6ede0 48%,
+      #f0e7d7 100%
+    );
+}
+
+
+/* ==============================
+   顶部区域
+============================== */
+
+.hero {
+  width: 100%;
+
+  text-align: center;
+
+  padding-top: 30rpx;
+}
+
+
+/* 小猪 Logo */
+
+.logo {
+  width: 145rpx;
+
+  height: 145rpx;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 248, 230, 0.85);
+
+  box-shadow:
+    0 10rpx 26rpx
+    rgba(64, 86, 62, 0.16);
+
+  font-size: 95rpx;
+
+  animation:
+    logoShow
+    0.45s;
+}
+
+
+/* 游戏标题 */
+
+.title {
+  margin-top: 24rpx;
+
+  font-size: 56rpx;
+
+  font-weight: 800;
+
+  letter-spacing: 3rpx;
+
+  color: #314434;
+}
+
+
+/* 副标题 */
+
+.subtitle {
+  margin-top: 12rpx;
+
+  font-size: 27rpx;
+
+  color: #758374;
+}
+
+
+/* ==============================
+   游戏进度卡片
+============================== */
+
+.progress-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 42rpx;
+
+  padding:
+    27rpx
+    30rpx;
+
+  border:
+    2rpx solid
+    rgba(82, 105, 78, 0.10);
+
+  border-radius: 30rpx;
+
+  background:
+    rgba(255, 248, 230, 0.90);
+
+  box-shadow:
+    0 9rpx 25rpx
+    rgba(61, 82, 59, 0.12);
+}
+
+
+.progress-left {
+  display: flex;
+
+  flex-direction: column;
+}
+
+
+.progress-label {
+  font-size: 23rpx;
+
+  color: #85877d;
+}
+
+
+.progress-value {
+  margin-top: 5rpx;
+
+  font-size: 38rpx;
+
+  font-weight: 800;
+
+  color: #314434;
+}
+
+
+.progress-right {
+  padding:
+    10rpx
+    18rpx;
+
+  border-radius: 24rpx;
+
+  background: #d6e7d3;
+
+  color: #43704a;
+
+  font-size: 23rpx;
+
+  font-weight: 600;
+}
+
+
+/* ==============================
+   菜单区域
+============================== */
+
+.menu {
+  width: 100%;
+
+  margin-top: 34rpx;
+}
+
+
+/* ==============================
+   通用菜单按钮
+============================== */
+
+.menu-btn {
+  width: 100%;
+
+  height: 120rpx;
+
+  box-sizing: border-box;
+
+  margin-bottom: 22rpx;
+
+  padding:
+    0
+    25rpx;
+
+  display: flex;
+
+  align-items: center;
+
+  border:
+    2rpx solid
+    rgba(85, 101, 77, 0.10);
+
+  border-radius: 30rpx;
+
+  background: #f8efdc;
+
+  box-shadow:
+    0 8rpx 22rpx
+    rgba(63, 80, 58, 0.12);
+
+  text-align: left;
+
+  transition:
+    transform
+    0.15s;
+}
+
+
+.menu-btn::after {
+  border: none;
+}
+
+
+.menu-btn:active {
+  transform: scale(0.97);
+}
+
+
+/* ==============================
+   开始游戏主按钮
+============================== */
+
+.menu-btn.primary {
+  border: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #567e5d,
+      #354f3a
+    );
+
+  color: #fff8e9;
+
+  box-shadow:
+    0 10rpx 26rpx
+    rgba(48, 76, 53, 0.26);
+}
+
+
+/* ==============================
+   左侧图标
+============================== */
+
+.btn-icon {
+  width: 72rpx;
+
+  height: 72rpx;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 22rpx;
+
+  background: #dbe7d5;
+
+  font-size: 37rpx;
+}
+
+
+.primary .btn-icon {
+  background:
+    rgba(255, 248, 230, 0.15);
+}
+
+
+/* ==============================
+   菜单文字
+============================== */
+
+.btn-content {
+  flex: 1;
+
+  margin-left: 18rpx;
+}
+
+
+.btn-title {
+  font-size: 31rpx;
+
+  font-weight: 750;
+
+  color: #344438;
+}
+
+
+.primary .btn-title {
+  color: #fff8e9;
+}
+
+
+.btn-desc {
+  margin-top: 5rpx;
+
+  font-size: 22rpx;
+
+  color: #888a80;
+}
+
+
+.primary .btn-desc {
+  color:
+    rgba(255, 248, 233, 0.67);
+}
+
+
+/* ==============================
+   右侧箭头
+============================== */
+
+.arrow {
+  margin-left: 12rpx;
+
+  font-size: 48rpx;
+
+  font-weight: 300;
+
+  color: #728073;
+}
+
+
+.primary .arrow {
+  color:
+    rgba(255, 248, 233, 0.9);
+}
+
+
+/* ==============================
+   底部提示
+============================== */
+
+.footer {
+  margin-top: 18rpx;
+
+  padding:
+    16rpx
+    24rpx;
+
+  border-radius: 24rpx;
+
+  background:
+    rgba(236, 229, 211, 0.58);
+
+  text-align: center;
+
+  font-size: 21rpx;
+
+  color: #758074;
+}
+
+
+/* ==============================
+   游戏说明遮罩
+============================== */
+
+.help-mask {
+  position: fixed;
+
+  left: 0;
+
+  top: 0;
+
+  z-index: 100;
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(37, 54, 39, 0.60);
+}
+
+
+/* ==============================
+   游戏说明弹窗
+============================== */
+
+.help-box {
+  width: 570rpx;
+
+  box-sizing: border-box;
+
+  padding:
+    44rpx
+    42rpx;
+
+  border:
+    2rpx solid
+    rgba(82, 105, 78, 0.12);
+
+  border-radius: 36rpx;
+
+  background: #f8efdc;
+
+  box-shadow:
+    0 20rpx 50rpx
+    rgba(33, 50, 35, 0.27);
+
+  animation:
+    dialogShow
+    0.25s;
+}
+
+
+/* 说明图标 */
+
+.help-icon {
+  width: 110rpx;
+
+  height: 110rpx;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #d7e5d3;
+
+  font-size: 68rpx;
+}
+
+
+/* 说明标题 */
+
+.help-title {
+  margin-top: 20rpx;
+
+  text-align: center;
+
+  font-size: 40rpx;
+
+  font-weight: 800;
+
+  color: #344438;
+}
+
+
+/* 说明列表 */
+
+.help-list {
+  margin-top: 34rpx;
+}
+
+
+.help-item {
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 24rpx;
+
+  font-size: 26rpx;
+
+  line-height: 1.6;
+
+  color: #565f55;
+}
+
+
+/* 序号 */
+
+.help-number {
+  width: 50rpx;
+
+  height: 50rpx;
+
+  flex-shrink: 0;
+
+  margin-right: 20rpx;
+
+  line-height: 50rpx;
+
+  border-radius: 50%;
+
+  background: #cedecc;
+
+  text-align: center;
+
+  color: #426a48;
+
+  font-weight: 800;
+}
+
+
+/* 知道了按钮 */
+
+.help-close {
+  width: 320rpx;
+
+  height: 82rpx;
+
+  line-height: 82rpx;
+
+  margin-top: 24rpx;
+
+  border-radius: 42rpx;
+
+  background:
+    linear-gradient(
+      135deg,
+      #567e5d,
+      #354f3a
+    );
+
+  color: #fff8e9;
+
+  font-size: 28rpx;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 7rpx 18rpx
+    rgba(48, 76, 53, 0.22);
+}
+
+
+.help-close::after {
+  border: none;
+}
+
+
+/* ==============================
+   动画
+============================== */
+
+@keyframes logoShow {
+
+  from {
+    transform:
+      scale(0.4)
+      rotate(-8deg);
+
+    opacity: 0;
+  }
+
+  to {
+    transform:
+      scale(1)
+      rotate(0);
+
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes dialogShow {
+
+  from {
+    transform: scale(0.85);
+
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+
+}

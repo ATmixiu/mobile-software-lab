@@ -1,0 +1,513 @@
+/* pages/levels/levels.wxss */
+/* ✍️ 我们新增美化版：森林绿 + 暖米色主题 */
+
+
+page {
+  background: #dfe9df;
+}
+
+
+/* ==============================
+   页面整体
+============================== */
+
+.page {
+  width: 100%;
+
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  padding:
+    30rpx
+    32rpx
+    70rpx;
+
+  background:
+    linear-gradient(
+      180deg,
+      #cddfce 0%,
+      #e6ede0 48%,
+      #f0e7d7 100%
+    );
+}
+
+
+/* ==============================
+   顶部
+============================== */
+
+.header {
+  text-align: center;
+
+  margin-bottom: 30rpx;
+
+  padding-top: 10rpx;
+}
+
+
+.header-icon {
+  width: 110rpx;
+
+  height: 110rpx;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 248, 230, 0.82);
+
+  font-size: 65rpx;
+
+  box-shadow:
+    0 10rpx 25rpx
+    rgba(64, 86, 62, 0.15);
+}
+
+
+.header-title {
+  margin-top: 18rpx;
+
+  font-size: 46rpx;
+
+  font-weight: 800;
+
+  letter-spacing: 2rpx;
+
+  color: #314434;
+}
+
+
+.header-subtitle {
+  margin-top: 10rpx;
+
+  font-size: 24rpx;
+
+  color: #758374;
+}
+
+
+/* ==============================
+   进度卡片
+============================== */
+
+.progress-card {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding:
+    26rpx
+    30rpx;
+
+  margin-bottom: 30rpx;
+
+  border:
+    2rpx solid
+    rgba(82, 105, 78, 0.10);
+
+  background:
+    rgba(255, 248, 230, 0.88);
+
+  border-radius: 30rpx;
+
+  box-shadow:
+    0 9rpx 25rpx
+    rgba(61, 82, 59, 0.12);
+}
+
+
+.progress-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.progress-label {
+  font-size: 23rpx;
+
+  color: #85877d;
+}
+
+
+.progress-number {
+  margin-top: 5rpx;
+
+  font-size: 38rpx;
+
+  font-weight: 800;
+
+  color: #314434;
+}
+
+
+.progress-percent {
+  padding:
+    10rpx
+    18rpx;
+
+  border-radius: 25rpx;
+
+  background: #d6e7d3;
+
+  font-size: 30rpx;
+
+  font-weight: 800;
+
+  color: #43704a;
+}
+
+
+/* 进度条 */
+
+.progress-bar {
+  overflow: hidden;
+
+  width: 100%;
+
+  height: 14rpx;
+
+  margin-top: 20rpx;
+
+  background: #d7ddd3;
+
+  border-radius: 20rpx;
+}
+
+
+.progress-value {
+  height: 100%;
+
+  border-radius: 20rpx;
+
+  background:
+    linear-gradient(
+      90deg,
+      #6aa875,
+      #466d4d
+    );
+}
+
+
+.progress-desc {
+  margin-top: 13rpx;
+
+  font-size: 22rpx;
+
+  color: #81877e;
+}
+
+
+/* ==============================
+   2×2 宫格
+============================== */
+
+.level-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  column-gap: 22rpx;
+
+  row-gap: 25rpx;
+}
+
+
+/* ==============================
+   关卡卡片
+============================== */
+
+.level-card {
+  width: 100%;
+
+  min-width: 0;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  padding-bottom: 22rpx;
+
+  border:
+    2rpx solid
+    rgba(85, 101, 77, 0.10);
+
+  border-radius: 28rpx;
+
+  background: #f8efdc;
+
+  box-shadow:
+    0 8rpx 22rpx
+    rgba(63, 80, 58, 0.13);
+
+  text-align: center;
+
+  transition: transform 0.15s;
+}
+
+
+.level-card:active {
+  transform: scale(0.96);
+}
+
+
+/* 已锁定关卡不要直接整体透明，
+   否则颜色会很灰 */
+.locked-card {
+  background: #e3e4d9;
+}
+
+
+/* ==============================
+   图片区域
+============================== */
+
+.image-box {
+  position: relative;
+
+  width: 100%;
+
+  height: 205rpx;
+
+  overflow: hidden;
+
+  background: #ced7ca;
+}
+
+
+.level-image {
+  display: block;
+
+  width: 100%;
+
+  height: 205rpx;
+}
+
+
+/* ==============================
+   锁定遮罩
+============================== */
+
+.lock-mask {
+  position: absolute;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    rgba(42, 58, 43, 0.60);
+
+  color: #fff7e8;
+}
+
+
+.lock-icon {
+  width: 72rpx;
+
+  height: 72rpx;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 247, 229, 0.18);
+
+  font-size: 45rpx;
+}
+
+
+.lock-text {
+  margin-top: 10rpx;
+
+  font-size: 23rpx;
+
+  font-weight: 600;
+}
+
+
+/* ==============================
+   关卡名称
+============================== */
+
+.level-name {
+  margin-top: 18rpx;
+
+  font-size: 31rpx;
+
+  font-weight: 800;
+
+  color: #344438;
+}
+
+
+/* ==============================
+   解锁状态
+============================== */
+
+.level-state {
+  display: inline-block;
+
+  margin-top: 9rpx;
+
+  padding:
+    6rpx
+    14rpx;
+
+  border-radius: 20rpx;
+
+  font-size: 20rpx;
+
+  color: #85877f;
+
+  background: #d8dbd1;
+}
+
+
+.level-state.unlocked {
+  background: #d3e5d1;
+
+  color: #3d7347;
+}
+
+
+/* ==============================
+   最佳成绩
+============================== */
+
+.level-best {
+  min-height: 30rpx;
+
+  margin-top: 12rpx;
+
+  padding:
+    0
+    8rpx;
+
+  font-size: 21rpx;
+
+  color: #756f62;
+}
+
+
+.locked-text {
+  font-size: 19rpx;
+
+  color: #918f86;
+}
+
+
+/* ==============================
+   开始挑战
+============================== */
+
+.challenge {
+  width: 180rpx;
+
+  height: 58rpx;
+
+  line-height: 58rpx;
+
+  margin:
+    16rpx
+    auto
+    0;
+
+  border-radius: 32rpx;
+
+  background:
+    linear-gradient(
+      135deg,
+      #567e5d,
+      #3e6746
+    );
+
+  color: #fff8e9;
+
+  font-size: 23rpx;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 5rpx 12rpx
+    rgba(60, 99, 68, 0.20);
+}
+
+
+.challenge:active {
+  transform: scale(0.95);
+}
+
+
+/* ==============================
+   返回主页
+============================== */
+
+.back-btn {
+  width: 340rpx;
+
+  height: 86rpx;
+
+  line-height: 86rpx;
+
+  margin-top: 40rpx;
+
+  border-radius: 45rpx;
+
+  background:
+    linear-gradient(
+      135deg,
+      #466b4c,
+      #314f37
+    );
+
+  color: #fff8e9;
+
+  font-size: 28rpx;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 8rpx 20rpx
+    rgba(48, 76, 53, 0.25);
+}
+
+
+.back-btn::after {
+  border: none;
+}
+
+
+.back-btn:active {
+  transform: scale(0.96);
+}

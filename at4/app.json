@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/levels/levels",
+    "pages/game/game"
+  ],
+
+  "window": {
+    "navigationBarTitleText": "推箱子大师",
+    "navigationBarBackgroundColor": "#F5F7FA",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F7FA"
+  },
+
+  "style": "v2"
+}
