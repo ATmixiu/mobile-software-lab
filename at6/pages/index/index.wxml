@@ -1,0 +1,101 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 欢迎区域 -->
+  <view class="welcome-section">
+    <view class="welcome-title">咪的天，又有新的小猫动态！</view>
+    <view class="welcome-subtitle">今天也来看看大家的猫猫吧</view>
+  </view>
+
+  <!-- 搜索框 -->
+  <view class="search-bar">
+    <view class="search-input-wrap">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" type="text" placeholder="搜索图片、标题或用户" value="{{searchInputValue}}" bindinput="onSearchInput" />
+      <view class="search-clear" wx:if="{{searchInputValue}}" bindtap="onClearSearch">✕</view>
+    </view>
+  </view>
+
+  <!-- 分类栏 -->
+  <view class="category-bar">
+    <view class="category-list">
+      <view class="category-item {{currentCategory === item ? 'active' : ''}}" wx:for="{{categories}}" wx:key="*this" bindtap="onCategoryChange" data-category="{{item}}">
+        {{item}}
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">猫猫正在赶来……</view>
+  </view>
+
+  <!-- 错误状态 -->
+  <view class="error" wx:if="{{!loading && error}}">
+    <view class="error-icon">⚠️</view>
+    <view class="error-text">{{error}}</view>
+    <view class="retry-btn" bindtap="loadPhotos">重新加载</view>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty" wx:if="{{!loading && !error && filteredList.length === 0}}">
+    <view class="empty-icon">🐱</view>
+    <view class="empty-text" wx:if="{{searchKeyword}}">没有找到相关的猫猫哦</view>
+    <view class="empty-text" wx:elif="{{currentCategory !== '全部'}}">这个分类暂时还没有图片～</view>
+    <view class="empty-text" wx:else>咪的天，这里还没有图片～</view>
+  </view>
+
+  <!-- 图片列表 -->
+  <view class="photo-list" wx:if="{{!loading && !error && filteredList.length > 0}}">
+    <view class="photo-card" wx:for="{{filteredList}}" wx:key="_id">
+      <!-- 用户信息栏 -->
+      <view class="user-bar" bindtap="onUserTap" data-openid="{{item._openid}}" data-nickname="{{item.nickName}}">
+        <image class="avatar" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+        <view class="user-info">
+          <view class="nickname">{{item.nickName}}</view>
+          <view class="location" wx:if="{{item.province || item.city}}">{{item.province}}{{item.city ? ' · ' + item.city : ''}}</view>
+        </view>
+        <view class="date">{{item.addDate}}</view>
+      </view>
+
+      <!-- 图片 -->
+      <view class="photo-wrap" bindtap="onPhotoTap" data-id="{{item._id}}">
+        <image class="photo-image" src="{{item.photoUrl}}" mode="widthFix" lazy-load="true"></image>
+      </view>
+
+      <!-- 图片信息 -->
+      <view class="photo-info" bindtap="onPhotoTap" data-id="{{item._id}}">
+        <view class="photo-title">{{item.title}}</view>
+        <view class="photo-desc" wx:if="{{item.description}}">{{item.description}}</view>
+      </view>
+
+      <!-- 底部信息栏 -->
+      <view class="photo-footer">
+        <view class="footer-left">
+          <view class="category-tag">{{item.category || '其他'}}</view>
+        </view>
+        <view class="footer-right">
+          <view class="footer-item">
+            <text class="footer-icon like-icon {{item.isLiked ? 'liked' : ''}}">♥</text>
+            <text class="footer-count">{{item.likeCount || 0}}</text>
+          </view>
+          <view class="footer-item">
+            <text class="footer-icon">💬</text>
+            <text class="footer-count">{{item.commentCount || 0}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{!loading && filteredList.length > 0}}">
+    <view class="load-more-text" wx:if="{{isLoadingMore}}">猫猫正在赶来……</view>
+    <view class="load-more-text" wx:elif="{{!hasMore}}">咪到底啦～</view>
+  </view>
+
+  <!-- 悬浮发布按钮 -->
+  <view class="fab" bindtap="onAddTap">
+    <text class="fab-icon">+</text>
+  </view>
+</view>

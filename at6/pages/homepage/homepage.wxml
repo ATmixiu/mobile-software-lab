@@ -1,0 +1,100 @@
+<!--pages/homepage/homepage.wxml-->
+<view class="container">
+  <!-- 用户信息头部 Profile Card -->
+  <view class="profile-card">
+    <view class="profile-bg"></view>
+    <view class="profile-content">
+      <image class="avatar-large" src="{{avatarUrl || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <view class="user-detail">
+        <view class="nickname-large">{{nickName || '匿名喵友'}}</view>
+        <view class="location-large">
+          <text wx:if="{{country || province || city}}">
+            📍 {{country}} {{province}} {{city}}
+          </text>
+          <text wx:else>📍 未知地区</text>
+        </view>
+      </view>
+      <!-- 编辑资料按钮（只有当前用户自己的主页才显示） -->
+      <view class="edit-profile-btn" wx:if="{{isOwner}}" bindtap="openEditModal">
+        <text>编辑资料</text>
+      </view>
+    </view>
+    
+    <!-- 统计栏 -->
+    <view class="stats-bar">
+      <view class="stats-item">
+        <view class="stats-number">{{photoCount}}</view>
+        <view class="stats-label">作品</view>
+      </view>
+      <view class="stats-divider"></view>
+      <view class="stats-item">
+        <view class="stats-number">{{likeCount}}</view>
+        <view class="stats-label">获赞</view>
+      </view>
+      <view class="stats-divider"></view>
+      <view class="stats-item">
+        <view class="stats-number">{{categoryCount}}</view>
+        <view class="stats-label">分类</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">猫猫正在赶来……</view>
+  </view>
+
+  <!-- 错误提示 -->
+  <view class="error" wx:if="{{error && !loading}}">
+    <view class="error-text">{{error}}</view>
+  </view>
+
+  <!-- 空数据状态 -->
+  <view class="empty" wx:if="{{!loading && !error && photoList.length === 0}}">
+    <view class="empty-icon">🐱</view>
+    <view class="empty-text">咪的天，TA还没有发布过图片～</view>
+  </view>
+
+  <!-- 图片网格 -->
+  <view class="photo-section" wx:if="{{!loading && photoList.length > 0}}">
+    <view class="section-title">TA的图片</view>
+    <view class="photo-grid">
+      <view class="grid-item" wx:for="{{photoList}}" wx:key="_id" bindtap="onPhotoTap" data-id="{{item._id}}">
+        <image class="grid-image" src="{{item.photoUrl}}" mode="aspectFill" lazy-load="true"></image>
+        <view class="grid-overlay">
+          <view class="grid-title">{{item.title || '图片分享'}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 编辑资料弹窗 -->
+  <view class="modal-mask" wx:if="{{showEditModal}}" bindtap="closeEditModal">
+    <view class="modal-content" catchtap="">
+      <view class="modal-title">完善一下你的喵友资料～</view>
+      
+      <!-- 头像选择 -->
+      <view class="edit-avatar-section">
+        <view class="edit-label">头像</view>
+        <button class="avatar-choose-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+          <image class="edit-avatar-preview" src="{{editAvatar || '/images/default-avatar.png'}}" mode="aspectFill"></image>
+          <view class="avatar-change-text" wx:if="{{avatarUploading}}">上传中...</view>
+          <view class="avatar-change-text" wx:else>点击更换头像</view>
+        </button>
+      </view>
+
+      <!-- 昵称输入 -->
+      <view class="edit-nickname-section">
+        <view class="edit-label">昵称</view>
+        <input class="edit-nickname-input" type="nickname" placeholder="请输入昵称" value="{{editNickName}}" bindinput="onNickNameInput" maxlength="20" />
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="modal-actions">
+        <view class="modal-btn cancel-btn" bindtap="closeEditModal">取消</view>
+        <view class="modal-btn save-btn {{saving ? 'disabled' : ''}}" bindtap="saveProfile">{{saving ? '保存中...' : '保存资料'}}</view>
+      </view>
+    </view>
+  </view>
+</view>

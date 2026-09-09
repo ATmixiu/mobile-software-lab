@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/add/add",
+    "pages/homepage/homepage",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#FFF9F5",
+    "navigationBarTitleText": "咪友圈",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F7F5F2"
+  },
+  "tabBar": {
+    "color": "#AAA29E",
+    "selectedColor": "#F28C74",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/add/add",
+        "text": "发布"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

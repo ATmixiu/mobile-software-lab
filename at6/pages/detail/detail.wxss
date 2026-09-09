@@ -1,0 +1,296 @@
+/* pages/detail/detail.wxss - 奶油白+珊瑚橙主题 */
+.container {
+  padding-bottom: 140rpx;
+}
+
+/* 图片 */
+.photo-wrap {
+  width: 100%;
+  background: #FAF8F6;
+  padding: 24rpx 24rpx 0;
+  box-sizing: border-box;
+}
+
+.photo-image {
+  width: 100%;
+  display: block;
+  border-radius: 20rpx;
+}
+
+/* 信息卡片 */
+.info-card {
+  background: #FFFFFF;
+  margin: -20rpx 24rpx 0;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  position: relative;
+  z-index: 10;
+  box-shadow: 0 4rpx 16rpx rgba(47, 43, 42, 0.06);
+}
+
+/* 标题 */
+.photo-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2F2B2A;
+  margin-bottom: 12rpx;
+  line-height: 1.4;
+  letter-spacing: 1rpx;
+}
+
+/* 简介 */
+.photo-desc {
+  font-size: 28rpx;
+  color: #756D68;
+  line-height: 1.7;
+  margin-bottom: 24rpx;
+}
+
+/* 用户信息栏 */
+.user-bar {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-top: 1rpx solid #F3EFEC;
+  border-bottom: 1rpx solid #F3EFEC;
+  margin-bottom: 20rpx;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #F3EFEC;
+  margin-right: 20rpx;
+}
+
+.user-info {
+  flex: 1;
+}
+
+.nickname {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2F2B2A;
+  margin-bottom: 4rpx;
+}
+
+.location {
+  font-size: 24rpx;
+  color: #AAA29E;
+}
+
+.date {
+  font-size: 24rpx;
+  color: #C4BCB8;
+}
+
+/* 分类标签 */
+.category-row {
+  margin-bottom: 20rpx;
+}
+
+.category-tag {
+  display: inline-block;
+  font-size: 24rpx;
+  color: #F28C74;
+  background: #FCE8E2;
+  padding: 8rpx 24rpx;
+  border-radius: 10rpx;
+  font-weight: 500;
+}
+
+/* 点赞/评论 */
+.action-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  margin-right: 40rpx;
+  padding: 8rpx 0;
+}
+
+.action-icon {
+  font-size: 40rpx;
+  margin-right: 10rpx;
+  color: #A9A19D;
+}
+
+.action-text {
+  font-size: 28rpx;
+  color: #756D68;
+  font-weight: 500;
+}
+
+.like-btn.liked .action-icon {
+  color: #F28C74;
+}
+
+.like-btn.liked .action-text {
+  color: #F28C74;
+}
+
+/* 分割线 */
+.divider {
+  height: 1rpx;
+  background: #F3EFEC;
+  margin: 20rpx 0;
+}
+
+/* 轻量操作按钮 */
+.func-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 8rpx 0;
+}
+
+.func-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12rpx 24rpx;
+  background: #FAF8F6;
+  border-radius: 16rpx;
+  line-height: 1.4;
+}
+
+.func-btn::after {
+  border: none;
+}
+
+.func-icon {
+  font-size: 36rpx;
+  margin-bottom: 6rpx;
+}
+
+.func-text {
+  font-size: 24rpx;
+  color: #756D68;
+}
+
+.share-btn {
+  background: #FAF8F6;
+  color: #756D68;
+  font-size: 24rpx;
+  padding: 12rpx 24rpx;
+}
+
+/* 评论区 */
+.comment-section {
+  margin: 24rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 28rpx;
+  box-shadow: 0 4rpx 16rpx rgba(47, 43, 42, 0.06);
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #2F2B2A;
+  margin-bottom: 24rpx;
+  letter-spacing: 1rpx;
+}
+
+.comments-loading,
+.empty-comments {
+  text-align: center;
+  padding: 48rpx 0;
+  font-size: 26rpx;
+  color: #AAA29E;
+}
+
+.comment-list {
+  margin-top: 8rpx;
+}
+
+.comment-item {
+  display: flex;
+  padding: 20rpx 0;
+}
+
+.comment-item:last-child {
+  border-bottom: none;
+}
+
+.comment-avatar {
+  width: 68rpx;
+  height: 68rpx;
+  border-radius: 50%;
+  background: #F3EFEC;
+  margin-right: 18rpx;
+  flex-shrink: 0;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.comment-nickname {
+  font-size: 26rpx;
+  color: #756D68;
+  font-weight: 600;
+}
+
+.comment-delete {
+  font-size: 24rpx;
+  color: #C4BCB8;
+  padding: 4rpx 12rpx;
+}
+
+.comment-text {
+  font-size: 28rpx;
+  color: #2F2B2A;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+/* 底部评论输入栏 */
+.comment-input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  padding: 20rpx 28rpx;
+  background: #FFFFFF;
+  border-top: 1rpx solid #F3EFEC;
+  z-index: 100;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+}
+
+.comment-input {
+  flex: 1;
+  height: 76rpx;
+  background: #F7F5F2;
+  border-radius: 38rpx;
+  padding: 0 28rpx;
+  font-size: 28rpx;
+  color: #2F2B2A;
+}
+
+.send-btn {
+  margin-left: 20rpx;
+  padding: 18rpx 36rpx;
+  background: linear-gradient(135deg, #F28C74, #E87A60);
+  color: #fff;
+  border-radius: 38rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.send-btn.disabled {
+  opacity: 0.6;
+}

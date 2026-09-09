@@ -1,0 +1,112 @@
+<!--pages/detail/detail.wxml-->
+<view class="container">
+  <!-- 加载中 -->
+  <view class="loading" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <view class="loading-text">猫猫正在赶来……</view>
+  </view>
+
+  <!-- 错误状态 -->
+  <view class="error" wx:if="{{!loading && error}}">
+    <view class="error-icon">⚠️</view>
+    <view class="error-text">{{error}}</view>
+  </view>
+
+  <!-- 图片详情 -->
+  <view class="detail-content" wx:if="{{!loading && !error && photo}}">
+    <!-- 图片 -->
+    <view class="photo-wrap" bindtap="previewImage">
+      <image class="photo-image" src="{{photo.photoUrl}}" mode="widthFix"></image>
+    </view>
+
+    <!-- 图片信息卡片 -->
+    <view class="info-card">
+      <!-- 标题 -->
+      <view class="photo-title">{{photo.title || '图片分享'}}</view>
+      
+      <!-- 简介 -->
+      <view class="photo-desc" wx:if="{{photo.description}}">{{photo.description}}</view>
+      
+      <!-- 用户信息栏 -->
+      <view class="user-bar" bindtap="onUserTap">
+        <image class="avatar" src="{{photo.avatarUrl}}" mode="aspectFill"></image>
+        <view class="user-info">
+          <view class="nickname">{{photo.nickName || '微信用户'}}</view>
+          <view class="location">{{photo.province || photo.country || '未知地区'}}{{photo.city ? ' · ' + photo.city : ''}}</view>
+        </view>
+        <view class="date">{{photo.addDate}}</view>
+      </view>
+
+      <!-- 分类标签 -->
+      <view class="category-row">
+        <view class="category-tag">{{photo.category || '其他'}}</view>
+      </view>
+
+      <!-- 点赞/评论 -->
+      <view class="action-row">
+        <view class="action-item like-btn {{isLiked ? 'liked' : ''}}" bindtap="toggleLike">
+          <text class="action-icon">{{isLiked ? '♥' : '♡'}}</text>
+          <text class="action-text">{{likeCount}}</text>
+        </view>
+        <view class="action-item">
+          <text class="action-icon">💬</text>
+          <text class="action-text">{{comments.length}}</text>
+        </view>
+      </view>
+
+      <!-- 分割线 -->
+      <view class="divider"></view>
+
+      <!-- 轻量操作按钮 -->
+      <view class="func-buttons">
+        <view class="func-btn" bindtap="downloadImage">
+          <text class="func-icon">⬇️</text>
+          <text class="func-text">{{downloading ? '下载中...' : '保存图片'}}</text>
+        </view>
+        <button class="func-btn share-btn" open-type="share">
+          <text class="func-icon">📤</text>
+          <text class="func-text">分享好友</text>
+        </button>
+        <view class="func-btn" bindtap="previewImage">
+          <text class="func-icon">🔍</text>
+          <text class="func-text">全屏查看</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 评论区 -->
+    <view class="comment-section">
+      <view class="section-title">评论 ({{comments.length}})</view>
+      
+      <!-- 评论加载中 -->
+      <view class="comments-loading" wx:if="{{commentsLoading}}">
+        <text>猫猫正在赶来……</text>
+      </view>
+
+      <!-- 空评论 -->
+      <view class="empty-comments" wx:if="{{!commentsLoading && comments.length === 0}}">
+        <text>这里还安安静静的，咪两句吧～</text>
+      </view>
+
+      <!-- 评论列表 -->
+      <view class="comment-list" wx:if="{{!commentsLoading && comments.length > 0}}">
+        <view class="comment-item" wx:for="{{comments}}" wx:key="_id">
+          <image class="comment-avatar" src="{{item.avatarUrl}}" mode="aspectFill"></image>
+          <view class="comment-content">
+            <view class="comment-header">
+              <text class="comment-nickname">{{item.nickName || '微信用户'}}</text>
+              <text class="comment-delete" wx:if="{{item.userOpenid === openid}}" bindtap="deleteComment" data-id="{{item._id}}" data-openid="{{item.userOpenid}}">删除</text>
+            </view>
+            <view class="comment-text">{{item.content}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部评论输入栏 -->
+  <view class="comment-input-bar" wx:if="{{!loading && !error && photo}}">
+    <input class="comment-input" type="text" placeholder="咪两句吧……" value="{{commentInput}}" bindinput="onCommentInput" maxlength="100" confirm-type="send" bindconfirm="sendComment" />
+    <view class="send-btn {{commentLoading ? 'disabled' : ''}}" bindtap="sendComment">{{commentLoading ? '发送中...' : '发送'}}</view>
+  </view>
+</view>

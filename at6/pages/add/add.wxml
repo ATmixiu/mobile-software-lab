@@ -1,0 +1,80 @@
+<!--pages/add/add.wxml-->
+<view class="container">
+  <!-- 上传卡片 -->
+  <view class="card upload-card">
+    <view class="card-title">发布图片</view>
+    
+    <!-- 未选择图片 -->
+    <view class="choose-area" wx:if="{{!selectedImage}}" bindtap="chooseImage">
+      <view class="choose-icon">📷</view>
+      <view class="choose-text">点这里选择一张图片</view>
+      <view class="choose-sub">相册或相机都可以～</view>
+    </view>
+
+    <!-- 已选择图片 -->
+    <view class="preview-area" wx:if="{{selectedImage}}">
+      <image class="preview-image" src="{{selectedImage}}" mode="aspectFit" bindtap="previewSelected"></image>
+      
+      <!-- 上传进度 -->
+      <view class="progress-wrap" wx:if="{{uploading}}">
+        <view class="progress-bar">
+          <view class="progress-fill" style="width: {{uploadProgress}}%"></view>
+        </view>
+        <view class="progress-text">猫猫正在上传中 {{uploadProgress}}%</view>
+      </view>
+
+      <!-- 标题输入 -->
+      <view class="form-item" wx:if="{{!uploading}}">
+        <view class="form-label">标题 <text class="required">*</text></view>
+        <input class="form-input" type="text" placeholder="给这张图片起个名字～" maxlength="30" value="{{title}}" bindinput="onTitleInput" />
+      </view>
+
+      <!-- 简介输入 -->
+      <view class="form-item" wx:if="{{!uploading}}">
+        <view class="form-label">简介</view>
+        <textarea class="form-textarea" placeholder="咪两句，它今天发生了什么？" maxlength="120" value="{{description}}" bindinput="onDescriptionInput" auto-height></textarea>
+      </view>
+
+      <!-- 分类选择 -->
+      <view class="form-item" wx:if="{{!uploading}}">
+        <view class="form-label">分类 <text class="required">*</text></view>
+        <picker mode="selector" range="{{categories}}" value="{{categoryIndex}}" bindchange="onCategoryChange">
+          <view class="picker-display">
+            <text class="picker-text">{{category}}</text>
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="preview-actions" wx:if="{{!uploading}}">
+        <view class="action-btn clear-btn" bindtap="clearSelected">重新选择</view>
+        <view class="action-btn upload-btn {{submitting ? 'disabled' : ''}}" bindtap="uploadImage">{{submitting ? '发布中...' : '发布'}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 上传历史 -->
+  <view class="card history-card">
+    <view class="card-title">我的上传</view>
+    
+    <!-- 加载中 -->
+    <view class="loading" wx:if="{{loading}}">
+      <view class="loading-text">猫猫正在赶来……</view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty" wx:if="{{!loading && myPhotos.length === 0}}">
+      <view class="empty-icon">🖼️</view>
+      <view class="empty-text">还没有上传过图片哦</view>
+    </view>
+
+    <!-- 图片网格 -->
+    <view class="photo-grid" wx:if="{{!loading && myPhotos.length > 0}}">
+      <view class="grid-item" wx:for="{{myPhotos}}" wx:key="_id" bindtap="onHistoryPhotoTap" data-id="{{item._id}}">
+        <image class="grid-image" src="{{item.photoUrl}}" mode="aspectFill" lazy-load="true"></image>
+        <view class="grid-category" wx:if="{{item.category}}">{{item.category}}</view>
+      </view>
+    </view>
+  </view>
+</view>
